@@ -34,3 +34,47 @@ s3a://go01-demo
 Sizing & Scaling - GO WITH DEFAULTS
 
 KPIs
+
+Go do the CDE part.
+
+come back here and manage the deployment
+
+Actions -> start flow
+
+
+
+## FIRST TIME
+df.writeTo(f"{database}.{tablename}")\
+     .tableProperty("write.format.default", "parquet")\
+     .using("iceberg")\
+     .createOrReplace()
+
+—--------------------
+
+df = spark.read.options(header='True', inferSchema='True', delimiter=',') \
+  .parquet(f"{data_lake_name}/{srcdir}")
+
+df.printSchema()
+—--------------------
+spark.sql(f"SELECT * FROM {database}.{tablename}").show(10)
+
+print ("Getting row count")
+
+spark.sql(f"SELECT count(*) FROM {database}.{tablename}").show(10)
+
+—--------------------
+
+
+spark.sql(f"SELECT * FROM {database}.{tablename}.history").show()
+
+spark.sql(f"SELECT * FROM {database}.{tablename}.snapshots").show()
+spark.sql(f"SELECT * FROM {database}.{tablename}.refs").show()
+
+
+
+
+
+Now go to CDW
+/* NQL: how many messages are about forex */
+
+
