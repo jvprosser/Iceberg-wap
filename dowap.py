@@ -95,7 +95,7 @@ if audit_result == 0:
     # Commit changes (publish the data)
     spark.sql(f"ALTER TABLE {database}.{tablename} SET TBLPROPERTIES ('write.wap.enabled'='false')")
     print("Data published to production table.")
-    spark.sql(f"ALTER TABLE glue.test.employee CREATE TAG {tag} RETAIN 365 DAYS")
+    spark.sql(f"ALTER TABLE {database}.{tablename} CREATE TAG {tag} RETAIN 365 DAYS")
 else:
     print(f"Audit failed: {audit_result} rows have null values in 'id'.")
 
