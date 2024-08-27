@@ -126,5 +126,11 @@ generate some SQL with the assistant
 ```how many messages are about factset```
 
 
+Go back to CDE
+- Create an Airflow job
+- Add a CDW_1 query using `cdw_hive_default_iceberg` Virtual warehouse connection
 
+```
+select count(*) from factset.reddit_fin_chat
+```
 
