@@ -51,9 +51,9 @@ from pyspark.sql import SparkSession
 data_lake_name= "s3a://go01-demo/"
 
 
-srcdir  = sys.argv[1]
-tablename     = sys.argv[2]
-database      = sys.argv[3]
+#srcdir  = sys.argv[1]
+#tablename     = sys.argv[2]
+#database      = sys.argv[3]
 
 
 srcdir="/tmp/RedditFinance/winddude/reddit_finance_43_250k/parquet/default/train/1.parquet"
