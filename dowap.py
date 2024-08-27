@@ -87,9 +87,15 @@ audit_result = audit_df.collect()[0]["null_count"]
 audit_result
 
 if audit_result == 0:
+    import datetime
+
+    current_date = datetime.datetime.now()
+    tag = "Update_{}{:02d}{:02d}".format(current_date.year, current_date.month, current_date.day)
+    print(tag)
     # Commit changes (publish the data)
     spark.sql(f"ALTER TABLE {database}.{tablename} SET TBLPROPERTIES ('write.wap.enabled'='false')")
     print("Data published to production table.")
+    spark.sql(f"ALTER TABLE glue.test.employee CREATE TAG {tag} RETAIN 365 DAYS")
 else:
     print(f"Audit failed: {audit_result} rows have null values in 'id'.")
 
