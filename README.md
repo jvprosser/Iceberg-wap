@@ -3,7 +3,7 @@
 * ```DROP TABLE factset.reddit_fin_chat; ```
 
 
-# DataFlow
+# Cloudera DataFlow
 ```
 Cloudera DataFlow is a cloud-native data service that facilitates universal data distribution.
 
@@ -50,7 +50,9 @@ In the search field
 
 - KPIs
 
-# Go do the CDE part.
+# Cloudera Data Engineering
+
+
 
 
 
