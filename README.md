@@ -131,6 +131,6 @@ Go back to CDE
 - Add a CDW_1 query using `cdw_hive_default_iceberg` Virtual warehouse connection
 
 ```
-select count(*) from factset.reddit_fin_chat
+select * from factset.reddit_fin_chat limit 11
 ```
 
