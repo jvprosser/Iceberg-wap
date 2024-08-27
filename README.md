@@ -2,46 +2,58 @@
 # Prep
 * ```DROP TABLE factset.reddit_fin_chat; ```
 
-First go to Ready flow gallery and show all the options
 
-Then go to the catalog and type
-Fs- 
+# DataFlow
+```
+Cloudera DataFlow is a cloud-native data service that facilitates universal data distribution.
+
+Cloudera DataFlow  provides a no-code interface for moving data from any source to any destination 
+
+There are over 450 connectors enabling data movement no matter how the data is structured or stored.
+
+```
+
+- Go to Ready flow gallery and show all the options
+
+- Go to flow design and describe
+
+- Click on FS-HuggingFace-dataset1-reddit-fin
+- Go over the flow details
+- Go to the Parameters section and show how this can be reused.
+
+-  Go to projects and search on FS- * This is a functional grouping tool.*
+- Menu on right -> View project resources
+
+
+
+- Then go to the catalog and type
+```Fs- ```
 In the search field
 
-Click on FS-HuggingFace-dataset-Import
-Describe what you see
-Click on DEPLOY
-Give it a name
-FS-HuggingFace-trading-data
+- Click on FS-HuggingFace-dataset-Import
+- Describe what you see
+- Click on DEPLOY
+- Give it a name
+`FS-HuggingFace-trading-data`
 
-Target project
-JVP-projects
+- Target project
+`JVP-projects`
 
+- Datasetname
 
-Next
-Unclick autostart behavior
-next
+- Dest S4
 
-
-Datasetname
-sebdg/trading_data
-
-Dest S4
-/tmp/factset/trading_data
-
-Stiorage loc
-s3a://go01-demo
+- Stiorage loc
 
 
-Sizing & Scaling - GO WITH DEFAULTS
+- Sizing & Scaling - GO WITH DEFAULTS
 
-KPIs
+- KPIs
 
-Go do the CDE part.
+# Go do the CDE part.
 
-come back here and manage the deployment
 
-Actions -> start flow
+
 ```
 from __future__ import print_function
 import os
