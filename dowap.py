@@ -77,6 +77,12 @@ spark.sql(f"ALTER TABLE {database}.{tablename} SET TBLPROPERTIES ('write.wap.ena
 # Step 3: Set a unique session ID for WAP
 session_id = uuid.uuid4().hex
 spark.conf.set("spark.wap.id", session_id)
+
+df = spark.read.options(header='True', inferSchema='True', delimiter=',') \
+  .parquet(f"{data_lake_name}/{srcdir}")
+
+df.printSchema()
+
 df.writeTo(f"{database}.{tablename}")\
      .tableProperty("write.format.default", "parquet")\
      .using("iceberg")\
