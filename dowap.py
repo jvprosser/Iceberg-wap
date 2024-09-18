@@ -77,7 +77,10 @@ spark.sql(f"ALTER TABLE {database}.{tablename} SET TBLPROPERTIES ('write.wap.ena
 # Step 3: Set a unique session ID for WAP
 session_id = uuid.uuid4().hex
 spark.conf.set("spark.wap.id", session_id)
-
+df.writeTo(f"{database}.{tablename}")\
+     .tableProperty("write.format.default", "parquet")\
+     .using("iceberg")\
+     .append()
 ## do the audit test
 audit_df = spark.sql(f" SELECT COUNT(*) AS null_count FROM {database}.{tablename} WHERE id IS NULL")
 
