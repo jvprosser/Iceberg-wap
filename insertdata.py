@@ -40,7 +40,7 @@
 # # Spark-SQL from PySpark
 #
 # This example shows how to send SQL queries to Spark.
-
+# VIDEO https://drive.google.com/file/d/13jfgO4YxfufajYItLMs-6k-uzKhFXeno/view
 
 from __future__ import print_function
 import os
@@ -49,26 +49,34 @@ from pyspark.sql import SparkSession
 
 
 
+
 data_lake_name= "s3a://go01-demo/"
 
 
-srcdir  = sys.argv[1]
-tablename     = sys.argv[2]
-database      = sys.argv[3]
+#srcdir  = sys.argv[1]
+#tablename     = sys.argv[2]
+#database      = sys.argv[3]
 
 # OR ...
 srcdir="/tmp/RedditFinance/winddude/reddit_finance_43_250k/parquet/default/train/1.parquet"
 tablename="reddit_fin_chat"
 database="factset" 
 
-spark = SparkSession\
+#If using VSCODE
+from cde import CDESparkConnectSession
+spark = CDESparkConnectSession\
     .builder\
-    .appName(f"Data-Validation {database}.{tablename}")\
-    .config("spark.sql.catalog.spark_catalog", "org.apache.iceberg.spark.SparkSessionCatalog")\
-    .config("spark.sql.catalog.spark_catalog.type", "hive")\
-    .config("spark.sql.extensions", "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions")\
-    .config("spark.yarn.access.hadoopFileSystems", data_lake_name)\
-    .getOrCreate()
+    .sessionName('jvp-testk')\
+    .get()
+
+#spark = SparkSession\
+#    .builder\
+#    .appName(f"Data-Validation {database}.{tablename}")\
+#    .config("spark.sql.catalog.spark_catalog", "org.apache.iceberg.spark.SparkSessionCatalog")\
+##    .config("spark.sql.catalog.spark_catalog.type", "hive")\
+#    .config("spark.sql.extensions", "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions")\
+#    .config("spark.yarn.access.hadoopFileSystems", data_lake_name)\
+#    .getOrCreate()
 
 df = spark.read.options(header='True', inferSchema='True', delimiter=',') \
   .parquet(f"{data_lake_name}/{srcdir}")
