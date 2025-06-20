@@ -46,10 +46,7 @@ import os
 import sys
 from pyspark.sql import SparkSession
 
-
-
 data_lake_name= "s3a://go01-demo/"
-
 
 #srcdir  = sys.argv[1]
 #tablename     = sys.argv[2]
@@ -58,7 +55,7 @@ data_lake_name= "s3a://go01-demo/"
 
 srcdir="/tmp/RedditFinance/winddude/reddit_finance_43_250k/parquet/default/train/1.parquet"
 
-tablename="reddit_fin_chat"
+tablename="reddit_fin_chat2"
 database="factset" 
 
 spark = SparkSession\
