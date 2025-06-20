@@ -79,13 +79,13 @@ df = spark.read.options(header='True', inferSchema='True', delimiter=',') \
 
 df.printSchema()
 
-spark.sql(f"SELECT * FROM {database}.{tablename}").show(10)
 
-# SECOND Time in the job
+# First Time in the job
 df.writeTo(f"{database}.{tablename}")\
      .tableProperty("write.format.default", "parquet")\
+     .tableProperty("format-version" , "2")\
      .using("iceberg")\
-     .append()
+     .createOrReplace()
 
 
 spark.sql(f"SELECT * FROM {database}.{tablename}").show(10)
@@ -93,5 +93,5 @@ spark.sql(f"SELECT * FROM {database}.{tablename}").show(10)
 print ("Getting row count")
 
 spark.sql(f"SELECT count(*) FROM {database}.{tablename}").show(10)
-
+spark.sql(f"SELECT * FROM {database}.{tablename}.snapshots").show(10)
 spark.stop()
