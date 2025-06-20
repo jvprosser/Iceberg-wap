@@ -54,7 +54,7 @@ data_lake_name= "s3a://go01-demo/"
 #database      = sys.argv[3]
 
 # OR ...
-srcdir="/tmp/RedditFinance/winddude/reddit_finance_43_250k/parquet/default/train/1.parquet"
+srcdir="/tmp/RedditFinance/winddude/reddit_finance_43_250k/parquet/default/train/0.parquet"
 tablename="reddit_fin_chat2"
 database="factset" 
 
